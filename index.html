@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>大道本相</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/nutui@2.3.10/dist/nutui.min.css">
+</head>
+<body>
+	<div id="app">
+		<div class="top">
+			<nut-tab @tab-switch="tabSwitch" line-width="20">
+				<nut-tab-panel tab-title="文章">
+					<nut-button @click="clickHandler">
+						点击打开文章目录
+					</nut-button>
+					<div>
+					<h2>{{title_w}}</h2>
+					<p class="p-text">
+						{{dadaobx_w}}
+					</p>
+					<img src="./图片.jpg" style="width:90%" alt="" srcset="">
+					</div>
+				<nut-popup position="left" is-scroll=true v-model="show1" :style="{ width, height }">
+					<nut-sidenavbar :show="show1">
+						<nut-subsidenavbar title="大道本相" ikey="9">
+							<nut-sidenavbaritem ikey="10" @click="handleClick(0)" title="众志成城，阴阳合一"></nut-sidenavbaritem>
+							<nut-sidenavbaritem ikey="11" @click="handleClick(1)" title="先天与后天1"></nut-sidenavbaritem>
+							<nut-sidenavbaritem ikey="12" @click="handleClick(2)" title="先天与后天2"></nut-sidenavbaritem>
+						</nut-subsidenavbar>
+					</nut-sidenavbar>
+				</nut-popup>
+				</nut-tab-panel>
+				<nut-tab-panel tab-title="简介">修身养性</nut-tab-panel>
+				<nut-tab-panel tab-title="其他">
+					<img src="./图片.jpg" style="width:90%" alt="" srcset="">
+				</nut-tab-panel>
+			</nut-tab>
+		</div>
+	</div>
+	<!-- 引入Vue -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+	<!-- 引入组件库 -->
+	<script src="https://cdn.jsdelivr.net/npm/@nutui/nutui@2.3.10/dist/nutui.min.js"></script>
+	<script src="./wenzhang.js"></script>
+	<script>
+		new Vue({
+			el: '#app',
+			data() {
+				return {
+					width: '80%',
+					height: '100%',
+					show1:false,
+					dadaobx_w: dadaobx[0].value,
+					title_w: dadaobx[0].title,
+				}
+			},
+			methods: {
+				tabSwitch(){
+
+				},
+				clickHandler(){
+					this.show1=true
+				},
+				handleClick(val){
+					this.show1 = false
+					this.dadaobx_w= dadaobx[val].value
+					this.title_w=dadaobx[val].title
+				}
+			}
+		});
+	</script>
+	<!-- <img src="./图片.jpg" style="width:90%" alt="" srcset="">	 -->
+<!-- <a href="./说的话.pdf" target="_blank" rel="noopener noreferrer">点击查看</a> -->
+	<!-- <script src="./《大道本相》.pdf"></script> -->
+</body>
+<style>
+	body,html{
+		padding: 0px;
+		margin: 0px;
+	}
+	.top .nut-tab{
+		padding: 0px;
+	}
+	.top .nut-tab-item {
+    	height: calc(100vh - 60px);
+		overflow: auto;
+	}
+	.p-text{
+		font-size: 17px;
+	}
+</style>
+</html>
